@@ -110,7 +110,7 @@ function render(){
     <h2 id="rute">Rute</h2><p>Arahkan navigasi ke Padusan, Pacet, lalu ikuti Jalan Raya Padusan sampai kavling S1. Parkir luas muat hingga 8-9 mobil: 3 mobil di dalam villa dan 6 mobil di luar.</p><div class="note">Tips: bagikan pin lokasi dari Google Maps ke seluruh rombongan agar semua kendaraan tiba di titik yang sama.</div></div>`;
   }else{
     body=sub==='tips'?`<div class="info"><h2>Tips & informasi</h2>${ARTS.map((a,j)=>`<details class="art" ${j?'':'open'}><summary>${a[0]}</summary><p>${a[1]}</p></details>`).join('')}</div>`
-    :`<div class="info"><h2>Kata mereka yang sudah menginap</h2><div class="score"><b>4.7</b><span class="stars">★★★★★</span><span>39 ulasan Google Maps</span></div>${REV.map(r=>`<div class="rev"><q>${r[0]}</q><small>Ulasan Google Maps</small></div>`).join('')}<div class="reply"><b>Tanggapan pemilik:</b> ${REPLY}</div><div class="row"><a class="btn btn-line" href="${CONFIG.maps}" target="_blank" rel="noopener">Baca semua ulasan</a></div></div>`;
+    :`<div class="info"><h2>Kata mereka yang sudah menginap</h2><div class="score"><b>4.7</b><span class="stars">★★★★★</span><span>ulasan Google Maps</span></div>${REV.map(r=>`<div class="rev"><q>${r[0]}</q><small>Ulasan Google Maps</small></div>`).join('')}<div class="reply"><b>Tanggapan pemilik:</b> ${REPLY}</div><div class="row"><a class="btn btn-line" href="${CONFIG.maps}" target="_blank" rel="noopener">Baca semua ulasan</a></div></div>`;
   }
   const IC={room:['⌂','Room'],facility:['✓','Facility'],gallery:['▣','Gallery'],location:['⚲','Location'],news:['✎','News & Reviews']};
   $('#main').innerHTML=`<div class="card">${pgHead(...IC[tab])}${subs}${body}</div>`;
@@ -120,7 +120,7 @@ function render(){
 function side(){
   const K=KILAT.map(n=>P(n,ALT[n]));
   $('#side').innerHTML=`<div class="card"><h3>Pernak pernik</h3><div class="thumbs">${K.map((x,j)=>`<button data-i="${j}" aria-label="Perbesar foto ${j+1}"><img src="${T(x.n)}" alt="${esc(x.a)}" loading="lazy"></button>`).join('')}</div></div>
-  <div class="card"><h3>Ulasan pengunjung</h3><div class="score"><b>4.7</b><div><span class="stars">★★★★★</span><br><small>39 ulasan Google Maps</small></div></div>${REV.map(r=>`<div class="rev"><q>${r[0]}</q></div>`).join('')}<div class="reply"><b>Pak Agung (pemilik):</b> ${REPLY.replace(' (Pak Agung)','')}</div></div>
+  <div class="card"><h3>Ulasan pengunjung</h3><div class="score"><b>4.7</b><div><span class="stars">★★★★★</span><br><small>ulasan Google Maps</small></div></div>${REV.map(r=>`<div class="rev"><q>${r[0]}</q></div>`).join('')}<div class="reply"><b>Pak Agung (pemilik):</b> ${REPLY.replace(' (Pak Agung)','')}</div></div>
   <div class="card"><h3>Terhubung dengan kami</h3><div class="soc"><a class="ig" href="${CONFIG.ig}" target="_blank" rel="noopener">Instagram <small>@jambuklutukvillaofficial</small></a><a class="tt" href="${CONFIG.tt}" target="_blank" rel="noopener">TikTok <small>@jambuklutuk89</small></a><a class="wa" href="${WA('Halo Villa Jambu Klutuk, saya ingin bertanya.')}" target="_blank" rel="noopener">WhatsApp <small>0815-5333-4976</small></a></div></div>`;
   $$('.thumbs button').forEach(b=>b.onclick=()=>openLB(K,+b.dataset.i));
 }
